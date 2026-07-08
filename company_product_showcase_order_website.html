@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TR Future Robotics & Electronics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#0b1020;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    header{
+      width:100%;
+      padding:18px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      z-index:1000;
+      background:rgba(5,10,25,0.85);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:#00d9ff;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin-left:25px;
+      transition:0.3s;
+      font-size:15px;
+    }
+
+    nav a:hover{
+      color:#00d9ff;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:130px 8% 50px;
+      gap:40px;
+      background:linear-gradient(135deg,#08101f,#101b38,#08101f);
+    }
+
+    .hero-text{
+      flex:1;
+    }
+
+    .hero-text h1{
+      font-size:58px;
+      line-height:1.2;
+      margin-bottom:20px;
+    }
+
+    .hero-text span{
+      color:#00d9ff;
+    }
+
+    .hero-text p{
+      color:#cfd5e6;
+      line-height:1.8;
+      margin-bottom:30px;
+      max-width:650px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 30px;
+      background:#00d9ff;
+      color:#08101f;
+      text-decoration:none;
+      border-radius:12px;
+      font-weight:600;
+      transition:0.3s;
+      box-shadow:0 0 25px rgba(0,217,255,0.4);
+    }
+
+    .btn:hover{
+      transform:translateY(-4px);
+      background:white;
+    }
+
+    .hero-image{
+      flex:1;
+      display:flex;
+      justify-content:center;
+    }
+
+    .hero-image img{
+      width:100%;
+      max-width:520px;
+      border-radius:30px;
+      box-shadow:0 0 40px rgba(0,217,255,0.25);
+      animation:float 4s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%,100%{transform:translateY(0px)}
+      50%{transform:translateY(-15px)}
+    }
+
+    section{
+      padding:90px 8%;
+    }
+
+    .title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .title h2{
+      font-size:42px;
+      margin-bottom:10px;
+    }
+
+    .title p{
+      color:#aeb7d0;
+    }
+
+    .products{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:#131d3a;
+      border-radius:24px;
+      overflow:hidden;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 35px rgba(0,217,255,0.2);
+    }
+
+    .card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:22px;
+    }
+
+    .card-content h3{
+      margin-bottom:10px;
+      color:#00d9ff;
+    }
+
+    .card-content p{
+      color:#c5cce0;
+      font-size:14px;
+      line-height:1.7;
+      margin-bottom:20px;
+    }
+
+    .price{
+      font-size:22px;
+      font-weight:700;
+      margin-bottom:15px;
+    }
+
+    .services{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .service-box{
+      background:#101933;
+      padding:35px;
+      border-radius:22px;
+      text-align:center;
+      transition:0.3s;
+    }
+
+    .service-box:hover{
+      transform:scale(1.04);
+      background:#172448;
+    }
+
+    .service-box h3{
+      margin:18px 0;
+      color:#00d9ff;
+    }
+
+    .order-section{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    .order-info h2{
+      font-size:45px;
+      margin-bottom:20px;
+    }
+
+    .order-info p{
+      line-height:1.8;
+      color:#c5cce0;
+    }
+
+    form{
+      background:#131d3a;
+      padding:35px;
+      border-radius:24px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+
+    input,textarea,select{
+      padding:14px;
+      border:none;
+      border-radius:12px;
+      background:#1d2950;
+      color:white;
+      outline:none;
+    }
+
+    textarea{
+      resize:none;
+      height:120px;
+    }
+
+    button{
+      padding:15px;
+      border:none;
+      border-radius:12px;
+      background:#00d9ff;
+      color:#08101f;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    button:hover{
+      background:white;
+    }
+
+        .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+      margin-top:50px;
+    }
+
+    .stat-box{
+      background:#111b35;
+      padding:35px;
+      border-radius:24px;
+      text-align:center;
+      border:1px solid rgba(255,255,255,0.05);
+      transition:0.4s;
+    }
+
+    .stat-box:hover{
+      transform:translateY(-8px);
+      box-shadow:0 0 30px rgba(0,217,255,0.18);
+    }
+
+    .stat-box h1{
+      font-size:42px;
+      color:#00d9ff;
+      margin-bottom:10px;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:25px;
+    }
+
+    .gallery img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      border-radius:24px;
+      transition:0.4s;
+      border:2px solid rgba(255,255,255,0.05);
+    }
+
+    .gallery img:hover{
+      transform:scale(1.03);
+      box-shadow:0 0 30px rgba(0,217,255,0.2);
+    }
+
+    .testimonial-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:25px;
+    }
+
+    .testimonial{
+      background:#131d3a;
+      padding:30px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    .testimonial h3{
+      color:#00d9ff;
+      margin-top:20px;
+    }
+
+    .cta-banner{
+      background:linear-gradient(135deg,#00d9ff,#0077ff);
+      padding:60px;
+      border-radius:30px;
+      text-align:center;
+      color:#08101f;
+      margin-top:40px;
+      box-shadow:0 0 40px rgba(0,217,255,0.25);
+    }
+
+    .cta-banner h2{
+      font-size:42px;
+      margin-bottom:15px;
+    }
+
+    .floating-btn{
+      position:fixed;
+      right:25px;
+      bottom:25px;
+      background:#25D366;
+      color:white;
+      width:65px;
+      height:65px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:28px;
+      text-decoration:none;
+      box-shadow:0 0 30px rgba(37,211,102,0.5);
+      z-index:1000;
+      animation:pulse 2s infinite;
+    }
+
+    @keyframes pulse{
+      0%{transform:scale(1)}
+      50%{transform:scale(1.08)}
+      100%{transform:scale(1)}
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      border-top:1px solid rgba(255,255,255,0.08);
+      color:#9ba5c2;
+      background:#08101f;
+    }
+
+    .socials{
+      margin-top:15px;
+    }
+
+    .socials a{
+      color:#00d9ff;
+      text-decoration:none;
+      margin:0 10px;
+    }
+
+    @media(max-width:900px){
+      .hero,
+      .order-section{
+        grid-template-columns:1fr;
+        flex-direction:column;
+      }
+
+      .hero-text h1{
+        font-size:42px;
+      }
+
+      nav{
+        display:none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">TR FutureTech</div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#services">Services</a>
+      <a href="#order">Order</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>Future of <span>Electronics & Robotics</span></h1>
+
+      <p>
+        Welcome to Tejas Robotics & Electronics. We create smart electronic systems,
+        robotics solutions, IoT products, LED displays, automation systems and custom
+        embedded hardware for businesses, industries and clients.
+      </p>
+
+      <a href="#products" class="btn">Explore Products</a>
+    </div>
+
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=1200&auto=format&fit=crop" alt="robotics">
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="title">
+      <h2>Our Products</h2>
+      <p>Smart Solutions for Modern Technology</p>
+    </div>
+
+    <div class="products">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt="LED Display">
+        <div class="card-content">
+          <h3>P10 LED Display Board</h3>
+          <p>High brightness programmable LED display board for shops, colleges and industries.</p>
+          <div class="price">₹12,999</div>
+          <a href="#order" class="btn">Order Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?q=80&w=1200&auto=format&fit=crop" alt="Robot Car">
+        <div class="card-content">
+          <h3>WiFi Robot Car</h3>
+          <p>ESP32 based robot car with camera streaming and mobile app control.</p>
+          <div class="price">₹18,500</div>
+          <a href="#order" class="btn">Order Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1553406830-ef2513450d76?q=80&w=1200&auto=format&fit=crop" alt="Automation">
+        <div class="card-content">
+          <h3>Home Automation Kit</h3>
+          <p>Smart relay and automation system controllable from anywhere in India.</p>
+          <div class="price">₹8,999</div>
+          <a href="#order" class="btn">Order Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop" alt="Drone">
+        <div class="card-content">
+          <h3>AI Smart Drone</h3>
+          <p>Advanced surveillance and mapping drone with live wireless control system.</p>
+          <div class="price">₹35,000</div>
+          <a href="#order" class="btn">Order Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?q=80&w=1200&auto=format&fit=crop" alt="IoT Board">
+        <div class="card-content">
+          <h3>IoT Control System</h3>
+          <p>Industrial IoT monitoring system with mobile and cloud connectivity.</p>
+          <div class="price">₹15,999</div>
+          <a href="#order" class="btn">Order Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop" alt="PCB Design">
+        <div class="card-content">
+          <h3>Custom PCB Design</h3>
+          <p>Professional PCB design and embedded hardware solutions for startups.</p>
+          <div class="price">₹6,500</div>
+          <a href="#order" class="btn">Order Now</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="title">
+      <h2>Our Services</h2>
+      <p>Custom Technology Development</p>
+    </div>
+
+    <div class="services">
+
+      <div class="service-box">
+        <h3>Embedded Systems</h3>
+        <p>Custom PCB, ESP32, Arduino and embedded solutions.</p>
+      </div>
+
+      <div class="service-box">
+        <h3>IoT Development</h3>
+        <p>Cloud connected smart devices and automation projects.</p>
+      </div>
+
+      <div class="service-box">
+        <h3>Robot Development</h3>
+        <p>Industrial and educational robotic systems with AI integration.</p>
+      </div>
+
+      <div class="service-box">
+        <h3>Client Custom Orders</h3>
+        <p>Build custom electronics products based on client requirements.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="order">
+    <div class="order-section">
+
+      <div class="order-info">
+        <h2>Place Your Order</h2>
+
+        <p>
+          Clients can directly contact you using this form. You can connect this form
+          with Google Sheets, EmailJS, Firebase or WhatsApp API later to receive
+          real customer orders automatically.
+        </p>
+      </div>
+
+      <form id="orderForm">
+        <input type="text" placeholder="Your Full Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <input type="tel" placeholder="Phone Number" required>
+
+        <select required>
+          <option value="">Select Product</option>
+          <option>P10 LED Display</option>
+          <option>WiFi Robot Car</option>
+          <option>Home Automation Kit</option>
+          <option>Custom Electronics Project</option>
+        </select>
+
+        <textarea placeholder="Project Details / Order Requirement"></textarea>
+
+        <button type="submit">Submit Order</button>
+      </form>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="title">
+      <h2>Company Achievements</h2>
+      <p>Building Next Generation Technology Solutions</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat-box">
+        <h1>150+</h1>
+        <p>Projects Completed</p>
+      </div>
+
+      <div class="stat-box">
+        <h1>80+</h1>
+        <p>Happy Clients</p>
+      </div>
+
+      <div class="stat-box">
+        <h1>25+</h1>
+        <p>Automation Systems</p>
+      </div>
+
+      <div class="stat-box">
+        <h1>10+</h1>
+        <p>Robotics Innovations</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="title">
+      <h2>Project Gallery</h2>
+      <p>Our Real Electronics & Robotics Work</p>
+    </div>
+
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1200&auto=format&fit=crop">
+      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
+      <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=1200&auto=format&fit=crop">
+    </div>
+  </section>
+
+  <section>
+    <div class="title">
+      <h2>Client Reviews</h2>
+      <p>What Clients Say About Our Work</p>
+    </div>
+
+    <div class="testimonial-container">
+
+      <div class="testimonial">
+        <p>“Amazing automation system and very professional electronics work. Highly recommended.”</p>
+        <h3>- Industrial Client</h3>
+      </div>
+
+      <div class="testimonial">
+        <p>“The robotics project quality and UI design was futuristic and premium.”</p>
+        <h3>- Startup Founder</h3>
+      </div>
+
+      <div class="testimonial">
+        <p>“Fast support, innovative ideas and custom hardware solutions.”</p>
+        <h3>- Business Owner</h3>
+      </div>
+
+    </div>
+
+    <div class="cta-banner">
+      <h2>Ready To Build Your Next Tech Project?</h2>
+      <p>Let's create futuristic electronics and robotics solutions together.</p>
+      <br>
+      <a href="#order" class="btn">Start Project</a>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h3>Tejas Robotics & Electronics</h3>
+    <p>Innovation • Robotics • Embedded Systems • Automation</p>
+
+    <div class="socials">
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">YouTube</a>
+      <a href="#">GitHub</a>
+    </div>
+
+    <p style="margin-top:20px;">© 2026 Tejas Robotics & Electronics | All Rights Reserved</p>
+  </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script>
+
+    emailjs.init('--BGIRuNigvjnzeR0');
+
+    const form = document.getElementById('orderForm');
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      const templateParams = {
+        from_name: form.querySelector('input[type="text"]').value,
+        email: form.querySelector('input[type="email"]').value,
+        phone: form.querySelector('input[type="tel"]').value,
+        product: form.querySelector('select').value,
+        message: form.querySelector('textarea').value
+      };
+
+      emailjs.send(
+        'service_set9hd5',
+        'template_dtqiii3',
+        templateParams
+      )
+      .then(function(response) {
+        alert('Inquiry Submitted Successfully! We will contact you soon.');
+        form.reset();
+      }, function(error) {
+        alert('Failed to send inquiry. Please try again.');
+        console.log(error);
+      });
+    });
+
+  </script>
+
+  <a href="https://wa.me/917224973313" class="floating-btn">💬</a>
+</body>
+</html>
